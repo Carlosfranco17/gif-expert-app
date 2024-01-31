@@ -1,35 +1,42 @@
-import React, { useState } from 'react'
-import { AddCategory } from './components/AddCategory'
+import React, { useState } from "react";
+import { AddCategory } from "./components/AddCategory";
+import GifGrid from "./components/GifGrid";
+
 
 const Gifexpertapp = () => {
 
-    const [categories, setCategories] = useState(['One Punch','Dragon ball'])
+  const [categories, setCategories] = useState(["One Punch", "Dragon ball"]);
 
-    const onaddcategory =()=>{
-        setCategories([...categories,'hola'])
-    }
+  const onaddcategory = (newCategory) => {
+    console.log(newCategory);
 
+    if (categories.includes(newCategory)) return;
+
+    // setCategories([newCategory, ...categories]);
+
+    // setCategories.push(newCategory)
+
+    setCategories([...categories, newCategory]);
+  };
 
   return (
     <div>
-        
-<h1>Gifexpertapp</h1>
+      <h1>Gifexpertapp</h1>
 
-<AddCategory  setCategories={setCategories}/>
+      <AddCategory
+        // setCategories={setCategories}
 
-<button onClick={onaddcategory}>agregar</button>
-
-<ol>
-{
-    categories.map(category=>{
-    
-    return <li key={category }>{category}</li>})
-}
-
-</ol>
-
+        onNewCategory={(value) => onaddcategory(value)}
+      />
+        {categories?.map((category) => {
+          
+          return <GifGrid key={category}
+          category={category} />
+          
+        })}
+   
     </div>
-  )
-}
+  );
+};
 
-export default Gifexpertapp
+export default Gifexpertapp;

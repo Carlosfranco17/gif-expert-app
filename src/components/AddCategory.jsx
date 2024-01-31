@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-export const AddCategory = ({setCategories}) => {
+export const AddCategory = ({onNewCategory}) => {
   const [inputValue, setInputValue] = useState("One Punch");
 
   const onInputChange = ({ target }) => {
     setInputValue(target.value);
 
-    console.log(target.value);
+    // console.log(target.value);
   };
 
   const onSubmit=(event)=>{
@@ -15,9 +15,10 @@ export const AddCategory = ({setCategories}) => {
 
     if(inputValue.trim().length<=1)return;
 
-    setCategories((categories=>[...categories,inputValue]));
-
+    // setCategories((categories=>[...categories,inputValue]));
     setInputValue('')
+    onNewCategory(inputValue.trim())
+    
   }
 
   return (
@@ -27,7 +28,7 @@ export const AddCategory = ({setCategories}) => {
         placeholder="Buscar gifts"
         value={inputValue}
         onChange={onInputChange}
-      />
+      / >
     </form>
   );
 };
