@@ -1,16 +1,27 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import { getgifs } from "../helpers/getGif";
 
-const GifGrid = ({category}) => {
-
+const GifGrid = ({ category }) => {
  
+  useEffect(() => {
+    
+    getgifs(category)  ;
+  
+  
+  }, [])
+  
+
   return (
     <div>
+      <h3>{category}</h3>
+<ol>
+  
+  
+  </ol>   
+  
+  
+   </div>
+  );
+};
 
-<h3>{category}</h3>
-
-
-    </div>
-  )
-}
-
-export default GifGrid
+export default GifGrid;
