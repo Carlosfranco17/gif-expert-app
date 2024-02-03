@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const AddCategory = ({onNewCategory}) => {
+export const AddCategory = ({ onNewCategory }) => {
   const [inputValue, setInputValue] = useState("One Punch");
 
   const onInputChange = ({ target }) => {
@@ -9,17 +9,16 @@ export const AddCategory = ({onNewCategory}) => {
     // console.log(target.value);
   };
 
-  const onSubmit=(event)=>{
+  const onSubmit = (event) => {
     event.preventDefault();
     console.log(inputValue);
 
-    if(inputValue.trim().length<=1)return;
+    if (inputValue.trim().length <= 1) return;
 
     // setCategories((categories=>[...categories,inputValue]));
-    setInputValue('')
-    onNewCategory(inputValue.trim())
-    
-  }
+    setInputValue("");
+    onNewCategory(inputValue.trim());
+  };
 
   return (
     <form onSubmit={onSubmit}>
@@ -28,7 +27,7 @@ export const AddCategory = ({onNewCategory}) => {
         placeholder="Buscar gifts"
         value={inputValue}
         onChange={onInputChange}
-      / >
+      />
     </form>
   );
 };
